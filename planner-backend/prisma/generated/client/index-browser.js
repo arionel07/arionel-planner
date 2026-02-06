@@ -166,6 +166,7 @@ exports.Prisma.PomodoroRoundScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  totalSeconds: 'totalSeconds',
   isCompleted: 'isCompleted',
   pomodoroSessionId: 'pomodoroSessionId'
 };

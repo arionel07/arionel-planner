@@ -5903,14 +5903,25 @@ export namespace Prisma {
 
   export type AggregatePomodoroRound = {
     _count: PomodoroRoundCountAggregateOutputType | null
+    _avg: PomodoroRoundAvgAggregateOutputType | null
+    _sum: PomodoroRoundSumAggregateOutputType | null
     _min: PomodoroRoundMinAggregateOutputType | null
     _max: PomodoroRoundMaxAggregateOutputType | null
+  }
+
+  export type PomodoroRoundAvgAggregateOutputType = {
+    totalSeconds: number | null
+  }
+
+  export type PomodoroRoundSumAggregateOutputType = {
+    totalSeconds: number | null
   }
 
   export type PomodoroRoundMinAggregateOutputType = {
     id: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    totalSeconds: number | null
     isCompleted: boolean | null
     pomodoroSessionId: string | null
   }
@@ -5919,6 +5930,7 @@ export namespace Prisma {
     id: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    totalSeconds: number | null
     isCompleted: boolean | null
     pomodoroSessionId: string | null
   }
@@ -5927,16 +5939,26 @@ export namespace Prisma {
     id: number
     createdAt: number
     updatedAt: number
+    totalSeconds: number
     isCompleted: number
     pomodoroSessionId: number
     _all: number
   }
 
 
+  export type PomodoroRoundAvgAggregateInputType = {
+    totalSeconds?: true
+  }
+
+  export type PomodoroRoundSumAggregateInputType = {
+    totalSeconds?: true
+  }
+
   export type PomodoroRoundMinAggregateInputType = {
     id?: true
     createdAt?: true
     updatedAt?: true
+    totalSeconds?: true
     isCompleted?: true
     pomodoroSessionId?: true
   }
@@ -5945,6 +5967,7 @@ export namespace Prisma {
     id?: true
     createdAt?: true
     updatedAt?: true
+    totalSeconds?: true
     isCompleted?: true
     pomodoroSessionId?: true
   }
@@ -5953,6 +5976,7 @@ export namespace Prisma {
     id?: true
     createdAt?: true
     updatedAt?: true
+    totalSeconds?: true
     isCompleted?: true
     pomodoroSessionId?: true
     _all?: true
@@ -5996,6 +6020,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: PomodoroRoundAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PomodoroRoundSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: PomodoroRoundMinAggregateInputType
@@ -6026,6 +6062,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: PomodoroRoundCountAggregateInputType | true
+    _avg?: PomodoroRoundAvgAggregateInputType
+    _sum?: PomodoroRoundSumAggregateInputType
     _min?: PomodoroRoundMinAggregateInputType
     _max?: PomodoroRoundMaxAggregateInputType
   }
@@ -6034,9 +6072,12 @@ export namespace Prisma {
     id: string
     createdAt: Date
     updatedAt: Date
+    totalSeconds: number
     isCompleted: boolean | null
     pomodoroSessionId: string
     _count: PomodoroRoundCountAggregateOutputType | null
+    _avg: PomodoroRoundAvgAggregateOutputType | null
+    _sum: PomodoroRoundSumAggregateOutputType | null
     _min: PomodoroRoundMinAggregateOutputType | null
     _max: PomodoroRoundMaxAggregateOutputType | null
   }
@@ -6059,6 +6100,7 @@ export namespace Prisma {
     id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    totalSeconds?: boolean
     isCompleted?: boolean
     pomodoroSessionId?: boolean
     pomodoroSession?: boolean | PomodoroSessionDefaultArgs<ExtArgs>
@@ -6068,6 +6110,7 @@ export namespace Prisma {
     id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    totalSeconds?: boolean
     isCompleted?: boolean
     pomodoroSessionId?: boolean
     pomodoroSession?: boolean | PomodoroSessionDefaultArgs<ExtArgs>
@@ -6077,6 +6120,7 @@ export namespace Prisma {
     id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    totalSeconds?: boolean
     isCompleted?: boolean
     pomodoroSessionId?: boolean
     pomodoroSession?: boolean | PomodoroSessionDefaultArgs<ExtArgs>
@@ -6086,11 +6130,12 @@ export namespace Prisma {
     id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    totalSeconds?: boolean
     isCompleted?: boolean
     pomodoroSessionId?: boolean
   }
 
-  export type PomodoroRoundOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "isCompleted" | "pomodoroSessionId", ExtArgs["result"]["pomodoroRound"]>
+  export type PomodoroRoundOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "totalSeconds" | "isCompleted" | "pomodoroSessionId", ExtArgs["result"]["pomodoroRound"]>
   export type PomodoroRoundInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pomodoroSession?: boolean | PomodoroSessionDefaultArgs<ExtArgs>
   }
@@ -6110,6 +6155,7 @@ export namespace Prisma {
       id: string
       createdAt: Date
       updatedAt: Date
+      totalSeconds: number
       isCompleted: boolean | null
       pomodoroSessionId: string
     }, ExtArgs["result"]["pomodoroRound"]>
@@ -6539,6 +6585,7 @@ export namespace Prisma {
     readonly id: FieldRef<"PomodoroRound", 'String'>
     readonly createdAt: FieldRef<"PomodoroRound", 'DateTime'>
     readonly updatedAt: FieldRef<"PomodoroRound", 'DateTime'>
+    readonly totalSeconds: FieldRef<"PomodoroRound", 'Int'>
     readonly isCompleted: FieldRef<"PomodoroRound", 'Boolean'>
     readonly pomodoroSessionId: FieldRef<"PomodoroRound", 'String'>
   }
@@ -7027,6 +7074,7 @@ export namespace Prisma {
     id: 'id',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
+    totalSeconds: 'totalSeconds',
     isCompleted: 'isCompleted',
     pomodoroSessionId: 'pomodoroSessionId'
   };
@@ -7435,6 +7483,7 @@ export namespace Prisma {
     id?: StringFilter<"PomodoroRound"> | string
     createdAt?: DateTimeFilter<"PomodoroRound"> | Date | string
     updatedAt?: DateTimeFilter<"PomodoroRound"> | Date | string
+    totalSeconds?: IntFilter<"PomodoroRound"> | number
     isCompleted?: BoolNullableFilter<"PomodoroRound"> | boolean | null
     pomodoroSessionId?: StringFilter<"PomodoroRound"> | string
     pomodoroSession?: XOR<PomodoroSessionScalarRelationFilter, PomodoroSessionWhereInput>
@@ -7444,6 +7493,7 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    totalSeconds?: SortOrder
     isCompleted?: SortOrderInput | SortOrder
     pomodoroSessionId?: SortOrder
     pomodoroSession?: PomodoroSessionOrderByWithRelationInput
@@ -7456,6 +7506,7 @@ export namespace Prisma {
     NOT?: PomodoroRoundWhereInput | PomodoroRoundWhereInput[]
     createdAt?: DateTimeFilter<"PomodoroRound"> | Date | string
     updatedAt?: DateTimeFilter<"PomodoroRound"> | Date | string
+    totalSeconds?: IntFilter<"PomodoroRound"> | number
     isCompleted?: BoolNullableFilter<"PomodoroRound"> | boolean | null
     pomodoroSessionId?: StringFilter<"PomodoroRound"> | string
     pomodoroSession?: XOR<PomodoroSessionScalarRelationFilter, PomodoroSessionWhereInput>
@@ -7465,11 +7516,14 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    totalSeconds?: SortOrder
     isCompleted?: SortOrderInput | SortOrder
     pomodoroSessionId?: SortOrder
     _count?: PomodoroRoundCountOrderByAggregateInput
+    _avg?: PomodoroRoundAvgOrderByAggregateInput
     _max?: PomodoroRoundMaxOrderByAggregateInput
     _min?: PomodoroRoundMinOrderByAggregateInput
+    _sum?: PomodoroRoundSumOrderByAggregateInput
   }
 
   export type PomodoroRoundScalarWhereWithAggregatesInput = {
@@ -7479,6 +7533,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"PomodoroRound"> | string
     createdAt?: DateTimeWithAggregatesFilter<"PomodoroRound"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"PomodoroRound"> | Date | string
+    totalSeconds?: IntWithAggregatesFilter<"PomodoroRound"> | number
     isCompleted?: BoolNullableWithAggregatesFilter<"PomodoroRound"> | boolean | null
     pomodoroSessionId?: StringWithAggregatesFilter<"PomodoroRound"> | string
   }
@@ -7794,6 +7849,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    totalSeconds: number
     isCompleted?: boolean | null
     pomodoroSession: PomodoroSessionCreateNestedOneWithoutRoundsInput
   }
@@ -7802,6 +7858,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    totalSeconds: number
     isCompleted?: boolean | null
     pomodoroSessionId: string
   }
@@ -7810,6 +7867,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalSeconds?: IntFieldUpdateOperationsInput | number
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     pomodoroSession?: PomodoroSessionUpdateOneRequiredWithoutRoundsNestedInput
   }
@@ -7818,6 +7876,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalSeconds?: IntFieldUpdateOperationsInput | number
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     pomodoroSessionId?: StringFieldUpdateOperationsInput | string
   }
@@ -7826,6 +7885,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    totalSeconds: number
     isCompleted?: boolean | null
     pomodoroSessionId: string
   }
@@ -7834,6 +7894,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalSeconds?: IntFieldUpdateOperationsInput | number
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
@@ -7841,6 +7902,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalSeconds?: IntFieldUpdateOperationsInput | number
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     pomodoroSessionId?: StringFieldUpdateOperationsInput | string
   }
@@ -8235,14 +8297,20 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    totalSeconds?: SortOrder
     isCompleted?: SortOrder
     pomodoroSessionId?: SortOrder
+  }
+
+  export type PomodoroRoundAvgOrderByAggregateInput = {
+    totalSeconds?: SortOrder
   }
 
   export type PomodoroRoundMaxOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    totalSeconds?: SortOrder
     isCompleted?: SortOrder
     pomodoroSessionId?: SortOrder
   }
@@ -8251,8 +8319,13 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    totalSeconds?: SortOrder
     isCompleted?: SortOrder
     pomodoroSessionId?: SortOrder
+  }
+
+  export type PomodoroRoundSumOrderByAggregateInput = {
+    totalSeconds?: SortOrder
   }
 
   export type TaskCreateNestedManyWithoutUserInput = {
@@ -9062,6 +9135,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    totalSeconds: number
     isCompleted?: boolean | null
   }
 
@@ -9069,6 +9143,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    totalSeconds: number
     isCompleted?: boolean | null
   }
 
@@ -9144,6 +9219,7 @@ export namespace Prisma {
     id?: StringFilter<"PomodoroRound"> | string
     createdAt?: DateTimeFilter<"PomodoroRound"> | Date | string
     updatedAt?: DateTimeFilter<"PomodoroRound"> | Date | string
+    totalSeconds?: IntFilter<"PomodoroRound"> | number
     isCompleted?: BoolNullableFilter<"PomodoroRound"> | boolean | null
     pomodoroSessionId?: StringFilter<"PomodoroRound"> | string
   }
@@ -9314,6 +9390,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    totalSeconds: number
     isCompleted?: boolean | null
   }
 
@@ -9321,6 +9398,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalSeconds?: IntFieldUpdateOperationsInput | number
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
@@ -9328,6 +9406,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalSeconds?: IntFieldUpdateOperationsInput | number
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
@@ -9335,6 +9414,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalSeconds?: IntFieldUpdateOperationsInput | number
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
