@@ -6,8 +6,8 @@ import Loader from '@/components/ui/Loader'
 import { useProfile } from '@/hooks/useProfile'
 import { TypeUserForm } from '@/types/auth.types'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useLoadData } from './useLoadData'
-import { useUpdateSettings } from './useUpdateSettings'
+import { useLoadData } from './hooks/useLoadData'
+import { useUpdateSettings } from './hooks/useUpdateSettings'
 
 export function Settings() {
 	const {isLoading} = useProfile()
