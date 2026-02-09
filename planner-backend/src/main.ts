@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import cookieParser from 'cookie-parser'
 import { AppModule } from './app.module'
@@ -12,6 +13,13 @@ async function bootstrap() {
 		credentials: true,
 		exposedHeaders: 'set-cookie'
 	})
+
+	app.useGlobalPipes(
+		new ValidationPipe({
+			transform: true, // Автоматически преобразует типы (string -> number)
+			whitelist: true // Удаляет поля, которых нет в DTO
+		})
+	)
 
 	await app.listen(process.env.PORT ?? 4200)
 }

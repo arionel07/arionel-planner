@@ -3,7 +3,7 @@ import { EnumTokens } from '@/service/auth-toke.service'
 import type { NextRequest, } from 'next/server'
 import { NextResponse } from 'next/server'
 
-export async function middleware(request:NextRequest, response: NextResponse) {
+export async function proxy(request:NextRequest) {
 	const {url, cookies} = request
 
 	const refreshToken = cookies.get(EnumTokens.REFRESH_TOKEN)?.value

@@ -5,11 +5,16 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { PropsWithChildren, useState } from 'react'
 
 export function Providers({children}: PropsWithChildren) {
-	const [client] = useState(
+	const [client] = useState(() =>
 		new QueryClient({
 			defaultOptions: {
 				queries: {
-					refetchOnWindowFocus: false
+					staleTime: 60 * 1000,
+					gcTime: 5 * 60 * 1000,
+					refetchOnWindowFocus: false,
+					refetchOnMount: false,
+					refetchOnReconnect: false,
+					retry: 1
 				}
 			}
 		})

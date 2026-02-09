@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer'
 import {
 	IsEmail,
 	IsNumber,
@@ -11,16 +12,19 @@ import {
 export class PomodoroSettingsDto {
 	@IsOptional()
 	@IsNumber()
+	@Type(() => Number)
 	@Min(1)
 	workInterval?: number
 
 	@IsOptional()
 	@IsNumber()
+	@Type(() => Number)
 	@Min(1)
 	breakInterval?: number
 
 	@IsOptional()
 	@IsNumber()
+	@Type(() => Number)
 	@Min(1)
 	@Max(10)
 	intervalsCount?: number

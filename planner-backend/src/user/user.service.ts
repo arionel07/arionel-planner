@@ -102,15 +102,31 @@ export class UserService {
 			data = { ...dto, password: await hash(dto.password) }
 		}
 
-		return this.prisma.user.update({
+		const updatedUser = await this.prisma.user.update({
 			where: {
 				id
 			},
 			data,
 			select: {
+				id: true,
 				name: true,
-				email: true
+				email: true,
+				workInterval: true,
+				breakInterval: true,
+				intervalsCount: true
 			}
 		})
+
+		const statistics = [
+			{ label: 'Total', value: 0 },
+			{ label: 'Completed tasks', value: 0 },
+			{ label: 'Today tasks', value: 0 },
+			{ label: 'Week tasks', value: 0 }
+		]
+
+		return {
+			user: updatedUser,
+			statistics
+		}
 	}
 }

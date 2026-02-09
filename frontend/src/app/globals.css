@@ -5,7 +5,7 @@
 
 @theme {
 	--color-primary: #5197ff;
-	--color-secondary: #daf912;
+	--color-secondary: #fbff03;
 	--color-border: rgba(255, 255, 255, 0.12);
 	--color-sidebar: #141515;
 	--color-bg: #0e0f0f;
@@ -34,7 +34,7 @@
 body {
 	@apply text-base overflow-hidden;
 	font-family: var(--font-zerf), sans-serif;
-	color: rgb(var(--foreground-rgb));
+	color: #fff;
 	background-color: #0e0f0f;
 	@media (max-width: 1200px) {
 		font-size: 16px;
