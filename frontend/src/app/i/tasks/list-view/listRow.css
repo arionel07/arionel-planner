@@ -1,0 +1,95 @@
+.table {
+	width: 100%;
+}
+.header {
+	display: grid;
+	grid-template-columns: 1.4fr 0.4fr 0.4fr 0.1fr;
+}
+
+.header,
+.parentsWrapper,
+.row,
+.parentsWrapper .colHeading {
+	border-radius: 0.25rem; /* rounded */
+	border-top: 1px solid var(--border); /* border-t border-border */
+	text-align: left;
+	width: auto;
+	white-space: nowrap;
+}
+
+.header > div,
+.parentsWrapper > div,
+.row > div,
+.parentsWrapper .colHeading > div {
+	border-right: 1px solid var(--border); /* border-r border-border */
+	padding: 0.5rem 1rem; /* py-2 px-4 */
+}
+
+.header > div:last-child,
+.parentsWrapper > div:last-child,
+.row > div:last-child,
+.parentsWrapper .colHeading > div:last-child {
+	border-right: 0;
+}
+.parentsWrapper {
+	/* тут пока без apply — если будут стили, добавим */
+}
+
+.parentsWrapper .colHeading {
+	background-color: #0e0f0f;
+}
+
+.parentsWrapper .colHeading:hover {
+	background-color: transparent; /* hover:bg-transparent */
+}
+
+.parentsWrapper .colHeading > div {
+	font-weight: 600; /* font-semibold */
+	font-size: 1.25rem; /* text-xl */
+	padding-top: 0.75rem; /* py-3 */
+	padding-bottom: 0.75rem;
+}
+
+/* addRow */
+.addRow {
+	padding: 0.5rem 1rem; /* py-2 px-4 */
+	border-top: 1px solid var(--border); /* border-t border-border */
+}
+
+/* row */
+.row {
+	font-weight: 400; /* font-normal */
+	display: grid;
+	grid-template-columns: 1.4fr 0.4fr 0.4fr 0.1fr;
+	position: relative;
+}
+
+/* completed row */
+.row.completed > div > span > input {
+	font-style: italic;
+	text-decoration: line-through;
+	opacity: 0.5;
+}
+/* hover для строки */
+.row:hover {
+	background-color: #1c1f1f; /* bg-[#1c1f1f] */
+}
+
+/* span внутри div */
+.row > div > span {
+	/* тут apply не было — оставляю пустым */
+}
+
+/* grip */
+.row > div > span .grip {
+	opacity: 0.2; /* opacity-20 */
+	transition: opacity 0.2s; /* transition-opacity */
+	margin-left: -0.75rem; /* -ml-3 */
+	margin-right: -0.25rem; /* -mr-1 */
+}
+
+/* hover / active для grip */
+.row > div > span .grip:hover,
+.row > div > span .grip:active {
+	opacity: 1; /* opacity-100 */
+}

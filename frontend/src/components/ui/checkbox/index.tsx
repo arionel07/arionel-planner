@@ -15,3 +15,5 @@ const Checkbox = (props: {
 		/>
 	)
 }
+
+export default Checkbox

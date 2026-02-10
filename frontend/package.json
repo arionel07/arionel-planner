@@ -14,6 +14,7 @@
     "@hello-pangea/dnd": "^18.0.1",
     "@tanstack/react-query": "^5.90.20",
     "@tanstack/react-query-devtools": "^5.91.3",
+    "add": "^2.0.6",
     "axios": "^1.13.4",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.19",
@@ -28,6 +29,7 @@
     "react-hook-form": "^7.71.1",
     "sass": "^1.97.3",
     "sonner": "^2.0.7",
+    "tailwind-merge": "^3.4.0",
     "tailwind-variants": "^3.2.2"
   },
   "devDependencies": {
