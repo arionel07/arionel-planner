@@ -1,10 +1,10 @@
 import dayjs, { type Dayjs } from 'dayjs'
 import 'dayjs/locale/ru'
 import isoWeek from 'dayjs/plugin/isoWeek'
-import weekofYear from 'dayjs/plugin/weekOfYear'
+import weekOfYear from 'dayjs/plugin/weekOfYear'
 
 dayjs.extend(isoWeek)
-dayjs.extend(weekofYear)
+dayjs.extend(weekOfYear)
 
 export const FILTERS: Record<string, Dayjs> = {
 	today: dayjs().startOf('day'),
@@ -33,7 +33,7 @@ export const COLUMNS = [
 	},
 	{
 		label: 'later',
-		value: 'Later'
+		value: 'later'
 	},
 	{
 		label: 'Completed',

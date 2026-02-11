@@ -42,14 +42,14 @@ export function ListRow({item, setItems}: IListRow) {
 		<div>
 			<span className='inline-flex items-center gap-2.5 w-full'>
 				<button aria-describedby='todo-item'>
-					<GripVertical className='grip ' />
+					<GripVertical className='grip' />
 				</button>
 
 				<Controller 
 					control={control}
 					name='isCompleted'
 					render={({ field: {value, onChange}}) => (
-						<Checkbox onChange={onChange} checked={value} extra='' color='gray' />
+						<Checkbox onChange={onChange} checked={value} extra='' color={'cyan'} />
 					)}
 				/>
 

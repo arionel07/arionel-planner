@@ -1,6 +1,6 @@
 'use client'
 
-import { ListView } from './ListView'
+import { ListView } from './list-view/ListView'
 
 export function TaskView() {
 	return <div>

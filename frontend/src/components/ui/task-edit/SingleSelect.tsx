@@ -35,6 +35,7 @@ export function SingleSelect({
 					e.preventDefault()
 					setIsShow(!isShow)
 				}}
+				className=' cursor-pointer'
 			>
 				{getValue() ? (
 					<Badge

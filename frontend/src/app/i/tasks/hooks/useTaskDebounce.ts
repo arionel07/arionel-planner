@@ -1,13 +1,14 @@
 import { TypeTaskFormState } from '@/types/task.types'
 import debounce from 'lodash.debounce'
-import { useCallback, useEffect } from 'react'
+import { Dispatch, SetStateAction, useCallback, useEffect } from 'react'
 import { UseFormWatch } from 'react-hook-form'
 import { useCreateTask } from './useCreateTask'
 import { useUpdateTask } from './useUpdateTask'
 
 interface IUseTaskDebounce {
 	watch: UseFormWatch<TypeTaskFormState>
-	itemId: string
+	itemId: string,
+	setItems?: Dispatch<SetStateAction<any[] | undefined>>
 }
 
 export function useTaskDebounce({watch, itemId}: IUseTaskDebounce) {
@@ -46,5 +47,4 @@ export function useTaskDebounce({watch, itemId}: IUseTaskDebounce) {
 		}
 	}, [watch(), debounceUpdateTask, debounceCreatedTask])
 
-	return {}
 }

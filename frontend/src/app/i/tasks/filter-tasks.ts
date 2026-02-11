@@ -11,7 +11,7 @@ dayjs.extend(isSameOrBefore)
 
 export const filterTasks = (
 	tasks: ITaskResponse[] | undefined,
-	value: string
+	value: string 
 ) => {
 	switch (value) {
 		case 'today':
@@ -22,26 +22,26 @@ export const filterTasks = (
 			return tasks?.filter(
 				item => dayjs(item.createdAt).isSame(FILTERS.tomorrow, 'day') && !item.isCompleted
 			)
-		case 'on-this-weak':
+		case 'on-this-week':
 			return tasks?.filter(
 				item => 
-					!dayjs(item.createdAt).isSame(FILTERS.today) &&
-					!dayjs(item.createdAt).isSame(FILTERS.tomorrow) &&
-					dayjs(item.createdAt).isSameOrBefore(FILTERS['on-this-weak']) &&
+					!dayjs(item.createdAt).isSame(FILTERS.today, 'day') &&
+					!dayjs(item.createdAt).isSame(FILTERS.tomorrow, 'day') &&
+					dayjs(item.createdAt).isSameOrBefore(FILTERS['on-this-week'], 'day') &&
 					!item.isCompleted
 			)
-		case 'on-next-weak':
+		case 'on-next-week':
 			return tasks?.filter(
 				item => 
-					dayjs(item.createdAt).isAfter(FILTERS['on-this-weak']) &&
-					dayjs(item.createdAt).isSameOrBefore(FILTERS['on-next-weak']) &&
+					dayjs(item.createdAt).isAfter(FILTERS['on-this-week'], 'day') &&
+					dayjs(item.createdAt).isSameOrBefore(FILTERS['on-next-week'], 'day') &&
 					!item.isCompleted
 		)
-		case 'on-next-weak':
+		case 'later':
 			return tasks?.filter(
 				item => 
 				(
-					dayjs(item.createdAt).isAfter(FILTERS['on-next-weak']) || !item.createdAt
+					dayjs(item.createdAt).isAfter(FILTERS['on-next-week'], 'day') || !item.createdAt
 				) && !item.isCompleted
 		)
 		case 'completed':

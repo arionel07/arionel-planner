@@ -1,11 +1,11 @@
 'use client'
 
 import { DragDropContext } from '@hello-pangea/dnd'
-import { COLUMNS } from './columns.data'
-import { useTask } from './hooks/useTask'
-import { useTaskDnd } from './hooks/useTaskDnd'
-import './list-view/listRow.css'
-import { ListRowParent } from './list-view/ListRowParent'
+import { COLUMNS } from '../columns.data'
+import { useTask } from '../hooks/useTask'
+import { useTaskDnd } from '../hooks/useTaskDnd'
+import './listRow.css'
+import { ListRowParent } from './ListRowParent'
 
 
 export function ListView() {

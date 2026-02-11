@@ -3,6 +3,7 @@ import { Draggable, Droppable } from '@hello-pangea/dnd'
 import { Dispatch, SetStateAction } from 'react'
 import { FILTERS } from '../columns.data'
 import { filterTasks } from '../filter-tasks'
+import { ListAddRowInput } from './ListAddRowInput'
 import { ListRow } from './ListRow'
 import './listRow.css'
 
@@ -32,33 +33,43 @@ export function ListRowParent({
 						</div>
 					</div>
 
-					{filterTasks(items, value)?.map((item, index) => (
-						<Draggable 
-							key={item.id}
-							draggableId={item.id}
-							index={index}
-						>
-							{provided => (
-								<div 
-									ref={provided.innerRef}
-									{...provided.draggableProps}
-									{...provided.dragHandleProps}
-								className="z-[4] relative">
-									<ListRow 
-										key={item.id}
+					{filterTasks(items, value)?.map((item, index) => {
+							if (!item.id) {
+								return (
+									<ListRow
+										key={`temp-${index}`}
 										item={item}
 										setItems={setItems}
 									/>
-								</div>
-							)
-
+								)
 							}
-						</Draggable>
-					))}
+
+							return (
+								<Draggable
+									key={item.id}
+									draggableId={item.id}
+									index={index}
+								>
+									{provided => (
+										<div
+											ref={provided.innerRef}
+											{...provided.draggableProps}
+											{...provided.dragHandleProps}
+										>
+											<ListRow
+												item={item}
+												setItems={setItems}
+											/>
+										</div>
+									)}
+								</Draggable>
+							)
+						})}
+
 
 					{provided.placeholder}
 
-					{value !== 'completed' && !items?.some(item => !item.id) && (
+					{value !== 'completed' && !filterTasks(items, value)?.some(item => !item.id) && (
 						<ListAddRowInput setItems={setItems} filterDate={FILTERS[value] ? FILTERS[value].format() : undefined} />
 					)}
 

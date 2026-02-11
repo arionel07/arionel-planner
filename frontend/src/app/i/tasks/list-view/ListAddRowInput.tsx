@@ -9,8 +9,9 @@ interface IListAddRowInput {
 
 export function ListAddRowInput({setItems, filterDate}: IListAddRowInput) {
 	const addRow = () => {
-		setItems((prev) => {
-			if (!prev) return
+		setItems(prev => {
+			
+			if (!prev) return 
 
 			return [ 
 				...prev,
@@ -29,7 +30,7 @@ export function ListAddRowInput({setItems, filterDate}: IListAddRowInput) {
 		<div className="addRow">
 			<button
 				onClick={addRow}
-				className='italic opacity-40 text-sm'
+				className='italic opacity-40 text-sm cursor-pointer'
 			>
 				Add task...
 			</button>
