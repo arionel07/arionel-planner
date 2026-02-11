@@ -8,7 +8,7 @@ import './listRow.css'
 import { ListRowParent } from './ListRowParent'
 
 
-export function ListView() {
+export function KanbanView() {
 
 	const {items, setItems} = useTask()
 
