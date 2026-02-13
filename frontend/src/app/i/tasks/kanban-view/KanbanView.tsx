@@ -4,8 +4,8 @@ import { DragDropContext } from '@hello-pangea/dnd'
 import { COLUMNS } from '../columns.data'
 import { useTask } from '../hooks/useTask'
 import { useTaskDnd } from '../hooks/useTaskDnd'
-import './listRow.css'
-import { ListRowParent } from './ListRowParent'
+import { KanbanColumn } from './KanbanColumn'
+import './KanbanView.css'
 
 
 export function KanbanView() {
@@ -16,17 +16,9 @@ export function KanbanView() {
 
 	return (
 	<DragDropContext onDragEnd={onDragEnd} >
-		<div className="table">
-			<div className="header">
-				<div>Task name</div>
-				<div>Due date</div>
-				<div>Priority</div>
-				<div></div>
-			</div>
-
-			<div className="parentsWrapper">
-				{COLUMNS.map(column => (
-					<ListRowParent 
+		<div className="board">
+			{COLUMNS.map(column => (
+					<KanbanColumn 
 						items={items}
 						label={column.label}
 						value={column.value}
@@ -34,7 +26,6 @@ export function KanbanView() {
 						key={column.value}
 					/>
 				))}
-			</div>
 		</div>
 	</DragDropContext>
 	)

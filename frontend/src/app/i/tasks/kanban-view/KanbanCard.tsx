@@ -10,14 +10,14 @@ import type { Dispatch, SetStateAction } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useDelete } from '../hooks/useDeleteTask'
 import { useTaskDebounce } from '../hooks/useTaskDebounce'
-import './listRow.css'
+import './KanbanView.css'
 
-interface IListRow {
+interface IKanbanCard {
 	item: ITaskResponse,
 	setItems: Dispatch<SetStateAction<ITaskResponse[] | undefined>>
 }
 
-export function ListRow({item, setItems}: IListRow) {
+export function KanbanCard({item, setItems}: IKanbanCard) {
 
 	const {register, control, watch} = useForm<TypeTaskFormState>({
 		defaultValues: {
@@ -34,7 +34,7 @@ export function ListRow({item, setItems}: IListRow) {
 
 	return <div
 		className={cn(
-			'row',
+			'card',
 			watch('isCompleted') ? 'completed' : '',
 			'animation-opacity'
 		)}
@@ -49,19 +49,18 @@ export function ListRow({item, setItems}: IListRow) {
 					control={control}
 					name='isCompleted'
 					render={({ field: {value, onChange}}) => (
-						<Checkbox onChange={onChange} checked={value} extra='' color={'cyan'} />
+						<Checkbox onChange={onChange} checked={value} extra='' color={'gray'} />
 					)}
 				/>
 
 				<TransparentField {...register('name')} />
 			</span>
 		</div>
-		<div>
+		<div className='cardBody'>
 			<Controller control={control} name='createdAt' render={({ field: {value, onChange}}) => (
-				<DatePicker onChange={onChange} value={value || ''} />
+				<DatePicker onChange={onChange} value={value || ''} position='left' />
 			)} />
-		</div>
-		<div>
+	
 			<Controller control={control} name='priority' render={({ field: {value, onChange}}) => (
 				<SingleSelect data={['high', 'medium', 'low'].map(item => ({
 					value: item,

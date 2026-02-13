@@ -1,0 +1,160 @@
+:root {
+	--bg-main: #0e0f0f;
+	--bg-hover: #1c1f1f;
+	--border-color: rgba(255, 255, 255, 0.12);
+	--text-muted: rgba(255, 255, 255, 0.55);
+	--text-primary: #ffffff;
+	--row-hover-transition: 0.2s;
+	--card-radius: 0.25rem;
+	--card-padding: 1rem;
+}
+
+/* ---------- BOARD ---------- */
+.board {
+	display: grid;
+	grid-auto-flow: column;
+	gap: 2rem;
+	width: 100%;
+	overflow-x: auto;
+	padding-bottom: 1rem;
+}
+
+/* ---------- COLUMN ---------- */
+.column {
+	border-radius: 8px;
+	width: 17rem;
+	min-height: 79vh;
+	border: 1px solid var(--border-color);
+	padding: 0.5rem;
+	display: flex;
+	flex-direction: column;
+}
+/* ---------- COLUMN HEADING ---------- */
+.columnHeading {
+	font-size: 15px;
+	font-weight: 600;
+	color: var(--text-primary);
+	padding: 0.5rem 0.75rem;
+	border-bottom: 1px solid var(--border-color);
+	margin-bottom: 0.5rem;
+}
+
+/* ---------- CARD ---------- */
+.card {
+	border-radius: var(--card-radius);
+	border: 1px solid var(--border-color);
+	margin-top: 1rem;
+	padding: var(--card-padding);
+	position: relative;
+	background-color: var(--bg-main);
+	transition:
+		background-color var(--row-hover-transition),
+		transform 0.15s ease;
+	display: flex;
+	flex-direction: column;
+}
+
+.card:hover {
+	background-color: var(--bg-hover);
+}
+
+.card.completed {
+	font-style: italic;
+	text-decoration: line-through;
+	opacity: 0.5;
+}
+
+/* ---------- CARD HEADER ---------- */
+.cardHeader {
+	display: flex;
+	align-items: center;
+	margin-bottom: 0.5rem;
+	font-size: 93%;
+	gap: 0.5rem;
+}
+
+/* ---------- GRIP ---------- */
+.grip {
+	opacity: 0.2;
+	transition: opacity 0.2s;
+	position: absolute;
+	top: 0.5rem;
+	right: 0.375rem;
+}
+
+.grip:hover,
+.grip:active {
+	opacity: 1;
+}
+
+/* ---------- CARD BODY ---------- */
+.cardBody {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	font-size: 83%;
+	margin: 20px;
+	padding: 3px 0;
+}
+
+.cardBody > div {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+}
+
+.cardBody input,
+.cardBody select {
+	flex: 1;
+}
+
+/* ---------- CARD ACTIONS ---------- */
+.cardActions {
+	position: absolute;
+	bottom: 0.25rem;
+	right: 0.375rem;
+	opacity: 0.4;
+	display: flex;
+	gap: 0.25rem;
+	transition: opacity 0.2s;
+}
+
+.cardActions button:hover {
+	opacity: 1;
+}
+
+/* ---------- ADD ROW ---------- */
+.addRow {
+	padding: 0.5rem 0.75rem;
+	cursor: pointer;
+	font-style: italic;
+	opacity: 0.5;
+	transition: all 0.2s;
+	color: var(--text-muted);
+	text-align: center;
+}
+
+.addRow:hover {
+	opacity: 1;
+	background-color: var(--bg-hover);
+	border-radius: var(--card-radius);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+	.board {
+		gap: 1rem;
+	}
+
+	.column {
+		width: 14rem;
+	}
+
+	.columnHeading {
+		font-size: 14px;
+	}
+
+	.cardBody {
+		font-size: 80%;
+	}
+}

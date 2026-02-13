@@ -1,14 +1,14 @@
 import { EnumTaskPriority, ITaskResponse } from '@/types/task.types'
 import { Dispatch, SetStateAction } from 'react'
-import './listRow.css'
+import './KanbanView.css'
 
-interface IListAddRowInput {
+interface IKanbanAddRowInput {
 	setItems: Dispatch<SetStateAction<ITaskResponse[] | undefined>>
 	filterDate?: string 
 }
 
-export function ListAddRowInput({setItems, filterDate}: IListAddRowInput) {
-	const addRow = () => {
+export function KanbanAddRowInput({setItems, filterDate}: IKanbanAddRowInput) {
+	const addCard = () => {
 		setItems(prev => {
 			
 			if (!prev) return 
@@ -28,9 +28,9 @@ export function ListAddRowInput({setItems, filterDate}: IListAddRowInput) {
 	
 
 	return (
-		<div className="addRow">
+		<div className="mt-5">
 			<button
-				onClick={addRow}
+				onClick={addCard}
 				className='italic opacity-40 text-sm cursor-pointer'
 			>
 				Add task...

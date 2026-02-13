@@ -40,9 +40,9 @@ export function ListRow({item, setItems}: IListRow) {
 		)}
 	>
 		<div>
-			<span className='inline-flex items-center gap-2.5 w-full'>
+			<span className='inline-flex items-center gap-2.5 w-full relative'>
 				<button aria-describedby='todo-item'>
-					<GripVertical className='grip' />
+					<GripVertical className='gripl' />
 				</button>
 
 				<Controller 

@@ -3,23 +3,23 @@ import { Draggable, Droppable } from '@hello-pangea/dnd'
 import { Dispatch, SetStateAction } from 'react'
 import { FILTERS } from '../columns.data'
 import { filterTasks } from '../filter-tasks'
-import { ListAddRowInput } from './ListAddRowInput'
-import { ListRow } from './ListRow'
-import './listRow.css'
+import { KanbanAddRowInput } from './KanbanAddRowInput'
+import { KanbanCard } from './KanbanCard'
+import './KanbanView.css'
 
-interface IListLowParent {
+interface IKanbanColumn {
 	value: string
 	label: string
 	items: ITaskResponse[] | undefined
 	setItems: Dispatch<SetStateAction<ITaskResponse[] | undefined>>
 }
 
-export function ListRowParent({
+export function KanbanColumn({
 	value,
 	items,
 	label,
 	setItems
-}: IListLowParent) {
+}: IKanbanColumn) {
 	return (
 		<Droppable droppableId={value} >
 			{provided => (
@@ -27,16 +27,16 @@ export function ListRowParent({
 					ref={provided.innerRef}
 					{...provided.droppableProps}
 				>
-					<div className='colHeading'>
-						<div className='w-full'>
+					<div className='column'>
+						<div className='columnHeading'>
 							{label}
 						</div>
-					</div>
+					
 
 					{filterTasks(items, value)?.map((item, index) => {
 							if (!item.id) {
 								return (
-									<ListRow
+									<KanbanCard
 										key={`temp-${index}`}
 										item={item}
 										setItems={setItems}
@@ -56,7 +56,7 @@ export function ListRowParent({
 											{...provided.draggableProps}
 											{...provided.dragHandleProps}
 										>
-											<ListRow
+											<KanbanCard
 												item={item}
 												setItems={setItems}
 											/>
@@ -70,9 +70,9 @@ export function ListRowParent({
 					{provided.placeholder}
 
 					{value !== 'completed' && !filterTasks(items, value)?.some(item => !item.id) && (
-						<ListAddRowInput setItems={setItems} filterDate={FILTERS[value] ? FILTERS[value].format() : undefined} />
+						<KanbanAddRowInput setItems={setItems} filterDate={FILTERS[value] ? FILTERS[value].format() : undefined} />
 					)}
-
+				</div>
 				</div>
 				)}
 		</Droppable>
