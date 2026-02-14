@@ -1,0 +1,27 @@
+.list .block {
+	border-radius: 0.25rem;
+	margin-bottom: 0.75rem;
+	padding: 1rem;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 0.875rem;
+}
+
+.list .block:hover .grip,
+.list .block:active .grip {
+	opacity: 1;
+}
+
+.grip {
+	opacity: 0.25;
+	transition: opacity 0.2s;
+	margin-left: -0.25rem;
+	margin-right: 0.125rem;
+}
+
+.grip:hover,
+.grip:active {
+	opacity: 1;
+}

@@ -6,8 +6,7 @@ export function useTaskDnd(items: ITaskResponse[]) {
 	const {updateTask} = useUpdateTask()
 	
 	const onDragEnd = (result: DropResult) => {
-		if (!result.destination) return
-		if(!items) return
+		if (!result.destination || !items) return
 
 		const destinationColumnId = result.destination.droppableId
 
